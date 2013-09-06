@@ -42,12 +42,6 @@ func main() {
 
 	args, err := parser.Parse()
 
-	// Show help message if user supply invalid options
-	if err != nil {
-		parser.WriteHelp(os.Stderr)
-		os.Exit(0)
-	}
-
 	// List supported licenses
 	if general.List == true {
 		fmt.Println("Supported licenses:")
@@ -101,5 +95,9 @@ func main() {
 	}
 
 	parser.WriteHelp(os.Stderr)
+	fmt.Fprintf(os.Stderr, "\nLICENSE:\n")
+	for _, val := range templates.List() {
+		fmt.Fprintf(os.Stderr, "  %s\n", val)
+	}
 	os.Exit(0)
 }
