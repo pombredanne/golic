@@ -20,7 +20,7 @@ func main() {
 	var help struct {
 		ShowHelp bool `short:"h" long:"help" description:"Show this help message"`
 	}
-	parser.AddGroup("Help Options", &help)
+	parser.AddGroup("Help Options", "", &help)
 
 	// License options
 	var options struct {
@@ -30,7 +30,7 @@ func main() {
 		Email     string `short:"e" long:"email" description:"E-Mail" value-name:"EMAIL"`
 	}
 
-	parser.AddGroup("License Options", &options)
+	parser.AddGroup("License Options", "", &options)
 
 	// general options
 	var general struct {
@@ -38,7 +38,7 @@ func main() {
 		List   bool   `short:"l" long:"list" description:"List supported licenses"`
 	}
 
-	parser.AddGroup("General Options", &general)
+	parser.AddGroup("General Options", "", &general)
 
 	args, err := parser.Parse()
 
